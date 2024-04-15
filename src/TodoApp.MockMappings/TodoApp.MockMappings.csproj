@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\bin\Release\TodoApp.MockMappings</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\bin\Debug\TodoApp.MockMappings</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="WireMock.Net" Version="1.4.42" />
+		<PackageReference Include="WireMock.Net.Abstractions" Version="1.4.42" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ToDo.BackendApp\ToDo.BackendApp.csproj" />
+	</ItemGroup>
+
+</Project>

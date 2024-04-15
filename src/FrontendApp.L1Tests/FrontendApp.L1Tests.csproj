@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\bin\Release\FrontendApp.L1Tests</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\bin\Debug\FrontendApp.L1Tests</OutputPath>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+		<PackageReference Include="NUnit" Version="3.13.3" />
+		<PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
+		<PackageReference Include="NUnit.Analyzers" Version="3.6.1" />
+		<PackageReference Include="coverlet.collector" Version="3.2.0" />
+		<PackageReference Include="Serilog" Version="3.1.1" />
+		<PackageReference Include="Serilog.Sinks.NUnit" Version="1.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\QaTools.PlaywrightWrapper\QaTools.PlaywrightWrapper.csproj" />
+		<ProjectReference Include="..\QaTools.SeleniumWrapper\QaTools.SeleniumWrapper.csproj" />
+		<ProjectReference Include="..\QaTools.WebTests.Core\QaTools.WebTests.Core.csproj" />
+		<ProjectReference Include="..\QaTools.WebTests.FrontendAppPages\QaTools.WebTests.FrontendAppPages.csproj" />
+		<ProjectReference Include="..\TestHostLibrary\TestHostLibrary.csproj" />
+		<ProjectReference Include="..\Testing.Common\Testing.Common.csproj" />
+		<ProjectReference Include="..\ToDo.BackendApp\ToDo.BackendApp.csproj" />
+		<ProjectReference Include="..\ToDo.FrontendApp\ToDo.FrontendApp.csproj" />
+		<ProjectReference Include="..\TodoApp.MockMappings\TodoApp.MockMappings.csproj" />
+	</ItemGroup>
+
+
+</Project>

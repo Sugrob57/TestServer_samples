@@ -1,0 +1,139 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>To-do CRUD</h1>
+<h3>Add</h3>
+<style>
+    body {
+        background-color: grey; /* задаем черный цвет фона для всей страницы */
+    }
+
+    h1, h2, h3 {
+        color: #ffc04e;
+    }
+
+    .container {
+        color: white;
+    }
+
+    button {
+        background-color: #ffc04e; /* задаем желтый цвет для кнопок */
+        border: 2px solid #ffc04e; /* задаем желтую рамку для кнопок */
+        color: white; /* устанавливаем цвет текста кнопок */
+        padding: 8px 12px; /* добавляем отступы внутри кнопок */
+        cursor: pointer; /* добавляем курсор указывающий на возможность клика */
+    }
+
+    .custom-form {
+        border: 2px solid #ffc04e; /* задаем рамку толщиной 2 пикселя и желтого цвета */
+        padding: 20px; /* добавляем немного отступа внутри рамки */
+        position: relative; /* делаем позиционирование элементов внутри формы относительным */
+    }
+
+    .form-group {
+        display: flex; /* используем flexbox для размещения элементов в строку */
+        align-items: center; /* выравниваем элементы по вертикали */
+        margin-bottom: 10px; /* чтобы добавить немного пространства между элементами */
+    }
+
+    input, textarea {
+        flex: 1; /* элементы input и textarea занимают доступное пространство */
+        box-sizing: border-box; /* чтобы ширина включала в себя padding и border */
+    }
+
+    .close-button {
+        position: absolute; /* делаем позиционирование кнопки абсолютным */
+        top: 10px; /* располагаем кнопку на 10 пикселей сверху */
+        right: 10px; /* располагаем кнопку на 10 пикселей справа */
+        cursor: pointer; /* добавляем курсор указывающий на возможность клика */
+    }
+
+    #edit-isDone {
+        margin-right: 5px; /* добавляем отступ справа для checkbox */
+        width: 5px;
+    }
+
+    #edit-title {
+        flex-grow: 1;
+    }
+
+    .custom-table {
+        border: 2px solid #ffc04e; /* задаем рамку таблицы */
+        border-collapse: collapse; /* объединяем границы ячеек таблицы */
+        width: 100%; /* таблица занимает всю доступную ширину */
+    }
+
+    .custom-table th,
+    .custom-table td {
+            border: 1px solid #ffc04e; /* задаем границы для ячеек таблицы */
+        padding: 8px; /* добавляем отступы внутри ячеек */
+        text-align: left; /* выравниваем текст по левому краю */
+    }
+
+    .custom-table th {
+            background-color: #ffc04e; /* цвет фона для заголовков */
+        color: white;
+    }
+
+        .custom-table td {
+            color: white; /* устанавливаем белый цвет текста для ячеек таблицы */
+        }
+
+    .custom-table td.checkbox-column {
+        text-align: center; /* выравниваем содержимое столбца с checkbox по центру */
+    }
+</style>
+
+<form class="custom-form" action="javascript:void(0);" method="POST" onsubmit="addItem()">
+    <div class="form-group">
+        <input type="text" id="add-title" placeholder="New to-do">
+    </div>
+    <div class="form-group">
+        <textarea type="text" id="add-description" placeholder="Description" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Add">
+    </div>
+</form>
+
+<div id="editForm" class="custom-form">
+    <h3>Edit</h3>
+    <a onclick="closeInput()" aria-label="Close" class="close-button">&#10006;</a>
+    <form action="javascript:void(0);" onsubmit="updateItem()" class="custom-form">
+        <input type="hidden" id="edit-id">
+        <div class="form-group">
+            <input type="checkbox" id="edit-isDone">
+            <input type="text" id="edit-title">
+        </div>
+        <div class="form-group">
+            <textarea type="text" id="edit-description"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+<h2 id="counter"></h2>
+
+<table class="custom-table">
+    <thead>
+        <tr>
+            <th>Is Complete?</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="todos">
+        <!-- Здесь будут добавлены строки с данными -->
+    </tbody>
+</table>
+
+<script src="~/js/jquery.js"></script>
+<script src="~/js/app.js"></script>
+<script type="text/javascript">
+    getItems();
+</script>

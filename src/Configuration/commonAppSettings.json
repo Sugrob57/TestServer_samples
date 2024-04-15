@@ -1,0 +1,10 @@
+﻿{
+	"AppSettings": {
+		"NotificationsEmail": "monitoring@admin.todo.com",
+		"SmtpServerAddress": "https://localhost:9092",
+		"BackendUri": "https://localhost:7248/"
+	},
+	"WebHostSettings": {
+		"BackendAppPort": 7248,
+	}
+}
