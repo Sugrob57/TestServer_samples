@@ -21,6 +21,7 @@ namespace ToDo.BackendApp.Services.StorageContexts
 
 		public void Add(Todo item)
 		{
+			item.Id = _todos?.OrderBy(x => x.Id).Last()?.Id ?? 0 + 1;
 			_todos.Add(item);
 		}
 

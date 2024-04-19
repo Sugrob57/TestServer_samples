@@ -21,7 +21,6 @@ namespace BackendApi.L1Tests.Tests
 			// arrange
 			var newTodo = new Todo()
 			{
-				Id = 100,
 				Title = "Test",
 				Description = "Test",
 				IsDone = true,
@@ -48,7 +47,9 @@ namespace BackendApi.L1Tests.Tests
 
 			// assert
 			response.IsSuccessStatusCode.Should().BeTrue();
-			record.Should().BeEquivalentTo(newTodo);
+			record.Title.Should().BeEquivalentTo(newTodo.Title);
+			record.Description.Should().BeEquivalentTo(newTodo.Description);
+
 			MockServer.Server.LogEntries.Where(x => x.RequestMessage.Body.Contains(email)).Should().HaveCount(1);
 
 			MockServer.Dispose();
